@@ -5,8 +5,8 @@ class Solution {
         ans[0] = -1;
         ans[1] = -1;
         for(int i = 0;i<n;i++){
-            if(nums[i] == target){
-                ans[0] = i;
+            if(nums[i]== target){
+                ans[0]= i;
                 break;
             }
         }
