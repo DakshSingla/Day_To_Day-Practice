@@ -15,15 +15,15 @@
  */
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<>();
-        helper(root,res,0);
-        return res;
+        List<List<Integer>> list= new ArrayList<>();
+        check(root, list, 0);
+        return list;
     }
-    public void helper(TreeNode root, List<List<Integer>> res, int level){
-        if(root == null) return ;
-        if(res.size()==level) res.add(new ArrayList<>());
-        res.get(level).add(root.val);
-        helper(root.left, res,level+1);
-        helper(root.right, res,level+1);
+    public void check(TreeNode cur, List<List<Integer>> ans, int l){
+        if(cur == null) return;
+        if(ans.size() == l) ans.add(new ArrayList<>());
+        ans.get(l).add(cur.val);
+        check(cur.left,ans,l+1);
+        check(cur.right,ans,l+1);
     }
 }
