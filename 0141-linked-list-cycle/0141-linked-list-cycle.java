@@ -14,12 +14,12 @@ public class Solution {
         if(head == null || head.next == null){
             return false;
         }
-        boolean flag = true;
+        boolean flag = false;
         ListNode cur = head;
         Set<ListNode> set = new HashSet<>();
         while(cur != null){
             if(set.contains(cur)){
-                flag = flag;
+                flag = true;
                 break;
             }
             set.add(cur);
