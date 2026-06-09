@@ -10,25 +10,28 @@
  */
 class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
-        if(head== null) return null;
-        ListNode check = head;
-        for(int i =0;i<k; i++){
-            if(check== null) return head;
-            check = check.next;
+        ArrayList<ListNode> list = new ArrayList<>();
+        ListNode ans = new ListNode(0);
+        ListNode cur = ans;
+        while(head != null){
+           list.add(head);
+           head = head.next;
+           if(list.size()== k){
+            for(int i = k-1;i>=0;i--){
+                cur.next = list.get(i);
+                cur = cur.next;
+            }
+            cur.next = null;
+            list.clear();
+           }
         }
-        ListNode newHead=reverse(head, check);
-        head.next= reverseKGroup(check, k);
-        return newHead;
-    }
+        if(list.size()>0){
+            for(int i = 0;i<list.size();i++){
+                cur.next = list.get(i);
+                cur = cur.next;
 
-    private ListNode reverse(ListNode start, ListNode end) {
-        ListNode prev = null, curr = start;
-        while(curr!=end) {
-            ListNode next= curr.next;
-            curr.next =prev;
-            prev= curr;
-            curr =next;
+            }
         }
-        return prev;
+        return ans.next;
     }
 }
